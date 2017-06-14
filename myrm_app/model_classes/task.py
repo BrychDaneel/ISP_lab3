@@ -8,8 +8,8 @@ class Task(models.Model):
     """
     """
 
-    bukkit = models.ForeignKey(Bukkit, on_delete=models.PROTECT)
     parametrs = models.OneToOneField(Parametrs)
+    bukkit = models.ForeignKey(Bukkit, on_delete=models.PROTECT)
     target = models.CharField(max_length=100)
     created = models.TimeField(auto_now=True)
     
@@ -17,12 +17,20 @@ class Task(models.Model):
     CANCELED = "canceled"
     RUNNING = "running"
     COMPLETED = "completed"
-    
     STATUS_CHOISCES = (
         (COMPLETED, "Completed"),
         (CANCELED, "Canceled"),
         (RUNNING, "Running"),
         (COMPLETED, "Completed"),
     )
-    
-    status = models.TextField(choices=STATUS_CHOISCES, default=WAITING)
+    status = models.CharField(choices=STATUS_CHOISCES, default=WAITING, max_length=30)
+
+    REMOVE = "rm"
+    RESTORE = "rs"
+    CLEAN = "cl"
+    COMMAND_CHOISCES = (
+        (REMOVE, "Remove"),
+        (RESTORE, "Restore"),
+        (CLEAN, "Clean")
+    )
+    status = models.CharField(choices=COMMAND_CHOISCES, max_length=30)

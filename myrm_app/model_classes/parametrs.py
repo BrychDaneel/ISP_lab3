@@ -13,7 +13,6 @@ class Parametrs(models.Model):
 
     trash_max_size = models.BigIntegerField(default=myrm.trash.DEFAULT_MAX_SIZE)
     trash_max_count = models.BigIntegerField(default=myrm.trash.DEFAULT_MAX_COUNT)
-    trash_dryrun = models.BooleanField(default=myrm.trash.DEFAULT_DRYRUN)
 
     autoclean_count = models.BigIntegerField(default=myrm.autocleaner.DEFAULT_CLEAN_COUNT)
     autoclean_size = models.BigIntegerField(default=myrm.autocleaner.DEFAULT_CLEAN_SIZE)
