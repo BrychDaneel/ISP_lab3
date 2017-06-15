@@ -12,7 +12,7 @@ class BukkitAdd(TemplateView):
     
     template_name = 'bukkit_add.html'
 
-    bucket_form = 'asd'
+    bucket_form = None
     parametrs_form = None
     success_url = reverse_lazy("bukkit_list")
     

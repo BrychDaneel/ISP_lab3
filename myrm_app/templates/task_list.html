@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <title>Bukkit list</title>
+    </head>
+    <body>
+        <ul>
+            {% for task in object_list %}
+            <li>
+                <a href="{% url "task_detail" id=task.pk %}">
+                    {{ task }}
+                </a>
+                <a href="{% url "task_edit" id=task.pk %}">
+                    edit
+                </a>
+                <a href="{% url "task_remove" id=task.pk %}">
+                    remove
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+        <a href="{% url "task_add" %}">Добавить</a>
+    </body>
+</html>

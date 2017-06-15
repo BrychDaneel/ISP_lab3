@@ -18,7 +18,7 @@ class Task(models.Model):
     RUNNING = "running"
     COMPLETED = "completed"
     STATUS_CHOISCES = (
-        (COMPLETED, "Completed"),
+        (COMPLETED, "Waitint"),
         (CANCELED, "Canceled"),
         (RUNNING, "Running"),
         (COMPLETED, "Completed"),
@@ -33,4 +33,4 @@ class Task(models.Model):
         (RESTORE, "Restore"),
         (CLEAN, "Clean")
     )
-    status = models.CharField(choices=COMMAND_CHOISCES, max_length=30)
+    command = models.CharField(choices=COMMAND_CHOISCES, max_length=30)

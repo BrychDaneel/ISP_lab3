@@ -5,9 +5,19 @@
     <body>
         <ul>
             {% for bukkit in object_list %}
-            <li>{{ bukkit }}</li>
+            <li>
+                <a href="{% url "bukkit_detail" id=bukkit.pk %}">
+                    {{ bukkit }}
+                </a>
+                <a href="{% url "bukkit_edit" id=bukkit.pk %}">
+                    edit
+                </a>
+                <a href="{% url "bukkit_remove" id=bukkit.pk %}">
+                    remove
+                </a>
+            </li>
             {% endfor %}
         </ul>
-        <a href="{% url "add_bukkit" %}">Добавить</a>
+        <a href="{% url "bukkit_add" %}">Добавить</a>
     </body>
 </html>

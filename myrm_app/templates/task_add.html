@@ -1,0 +1,13 @@
+<html>
+    <head>
+        <title>Task list</title>
+    </head>
+    <body>
+        <form action="" method="post">
+            {% csrf_token %}
+            {{ task_form.as_p }}
+            {{ parametrs_form.as_p }}
+            <input type="submit" value="Send message" />
+        </form>
+    </body>
+</html>
