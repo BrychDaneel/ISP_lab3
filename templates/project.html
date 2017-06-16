@@ -1,0 +1,37 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>{% block title %}{% endblock %}</title>
+<meta charset="utf-8">
+<link type="text/css" rel="stylesheet" href="{%static "styles/style.css" %}" />
+</head>
+<body class="page">
+<div id="wrap">
+  <div id="header"> <img src="{%static "images/logo.png" %}" />
+    <div id="nav">
+      <ul class="menu">
+        {% block menu %}
+        {% endblock %}
+      </ul>
+    </div>
+    <!--end nav-->
+  </div>
+  <!--end header-->
+  <div class="page-headline"> {% block headline %} {% endblock %}</div>
+  <div id="main">
+    {% block main %}
+    {% endblock %}
+  </div>
+  <!--end main-->
+  <div id="footer">
+    <p class="copyright">Copyright &copy; <a href="#">myrm</a> - All Rights Reserved / Design By <a target="_blank" href="http://www.chris-creed.com/">Chris Creed</a></p>
+  </div>
+  <!--end footer-->
+</div>
+<!--end wrap-->
+</body>
+<div class="cache-images"><img src="{%static "images/red-button-bg.png" %}" width="0" height="0" alt="" /><img src="{%static "images/black-button-bg.png" %}" width="0" height="0" alt="" /></div>
+<!--end cache-images-->
+</html>

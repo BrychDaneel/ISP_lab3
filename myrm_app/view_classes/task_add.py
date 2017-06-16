@@ -4,6 +4,7 @@ from django.shortcuts import redirect
 from myrm_app.models import Task
 from myrm_app.view_classes.forms.task import TaskForm 
 from myrm_app.view_classes.forms.parametrs import ParametrsForm
+from myrm_app.processor import start_process
 
 
 class TaskAdd(TemplateView):
@@ -35,6 +36,7 @@ class TaskAdd(TemplateView):
             task = self.task_form.save(commit=False)
             task.parametrs = parametrs
             task.save()
+            start_process()
             return redirect(TaskAdd.success_url)
         else:
             return super(TaskAdd, self).get(request, *args, **kwargs)

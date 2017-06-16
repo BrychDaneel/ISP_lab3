@@ -1,6 +1,8 @@
 import threading
 import time
-from myrm_app.models import 
+from myrm_app.models import Task 
+from myrm.remover import Remover
+import os
 
 def start_process(first_run=[]):
     if first_run:
@@ -13,5 +15,35 @@ def start_process(first_run=[]):
 
 def process():
         while True:
-            Task
-            time.sleap(1000)
+            query_set = Task.objects.filter(status=Task.WAITING)
+            
+            if not query_set.exists(): 
+                time.sleep(1)
+                continue
+
+            task = query_set.latest('created')
+
+            params = task.parametrs.struct()
+            bucket_path = os.path.join('buckets', task.bukkit.directory)
+            params['trash']['directory'] = bucket_path
+            remover = Remover(**params)
+            
+            target = os.path.join('disk', task.target)
+            task.status = Task.RUNNING
+            task.save()
+            try:
+                if task.command == Task.REMOVE:
+                    remover.remove(target)
+
+                elif task.command == Task.RESTORE:
+                    remover.restore(target)
+                    
+                elif task.command == Task.CLEAN:
+                    remover.clean(target)
+
+            except Exception as error:
+                task.status = Task.ERROR
+                task.save()
+            else:
+                task.status = Task.COMPLETED
+                task.save()

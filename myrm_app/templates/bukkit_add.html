@@ -1,13 +1,16 @@
-<html>
-    <head>
-        <title>Bukkit list</title>
-    </head>
-    <body>
-        <form action="" method="post">
-            {% csrf_token %}
-            {{ bucket_form.as_p }}
-            {{ parametrs_form.as_p }}
-            <input type="submit" value="Send message" />
-        </form>
-    </body>
-</html>
+{% extends "base.html" %}
+
+{% block title %} Add bucket {% endblock %}
+{% block headline %} Add bucket  {% endblock %}
+
+{% block main %}
+<div id="contact-form-container">
+    <form id="contact-form" action="" method="post">
+        {% csrf_token %}
+        {{ bucket_form.as_p }}
+        {{ parametrs_form.as_p }}
+        <input id="form_submit" type="submit" value="Send message" />
+    </form>
+</div>
+{% endblock %}
+        
