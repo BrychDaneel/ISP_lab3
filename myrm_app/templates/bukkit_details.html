@@ -1,10 +1,72 @@
-<html>
-    <head>
-        <title>Bukkit list</title>
-    </head>
-    <body>
-        <p> {{ bucket.name }} </p>
-        <p> {{ bucket.directory }} </p>
-        </form>
-    </body>
-</html>
+{% extends "base.html" %}
+
+{% block title %} Bucket parametrs {% endblock %}
+{% block headline %} Bucket parametrs  {% endblock %}
+
+{% block main %}
+    <p>
+    <table>
+        <caption><h2>Main options</h2></caption>
+        <tr>
+            <td>Name</td>
+            <td>{{ bucket.name }}</td>
+        </tr>
+        <tr>
+            <td>Directory</td>
+            <td>"site/buckets/{{ bucket.directory }}"</td>
+        </tr>
+    </table>
+    </p>
+    
+    <p><table>
+        <caption><h2>Trash parametrs</h2></caption>
+        <tr>
+            <td>Max file size</td>
+            <td>{{ bucket.parametrs.trash_max_size }}</td>
+        </tr>
+        <tr>
+            <td>Max files count</td>
+            <td>{{ bucket.parametrs.trash_max_count }}</td>
+        </tr>
+    </table></p>
+    
+    <p><table>
+        <caption><h2>Cleaning parametrs</h2></caption>
+        <tr>
+            <td>Files count</td>
+            <td>{{ bucket.parametrs.autoclean_count }}</td>
+        </tr>
+        <tr>
+            <td>Trash size</td>
+            <td>{{ bucket.parametrs.autoclean_size }}</td>
+        </tr>
+        <tr>
+            <td>Days</td>
+            <td>{{ bucket.parametrs.autoclean_days }}</td>
+        </tr>
+        <tr>
+            <td>Same files count</td>
+            <td>{{ bucket.parametrs.autoclean_same_count }}</td>
+        </tr>
+    </table></p>
+    
+    <p><table>
+        <caption><h2>Default task parametrs</h2></caption>
+        <tr>
+            <td>Force</td>
+            <td>{{ bucket.parametrs.force }}</td>
+        </tr>
+        <tr>
+            <td>Dryrun</td>
+            <td>{{ bucket.parametrs.dryrun }}</td>
+        </tr>
+        <tr>
+            <td>Replace files</td>
+            <td>{{ bucket.parametrs.auto_replace }}</td>
+        </tr>
+        <tr>
+            <td>Allow autoclen</td>
+            <td>{{ bucket.parametrs.allow_autoclean }}</td>
+        </tr>
+    </table></p>
+{% endblock %}

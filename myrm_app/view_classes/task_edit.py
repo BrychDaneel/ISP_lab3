@@ -11,7 +11,7 @@ class TaskEdit(TemplateView):
     """
     """
     
-    template_name = 'task_add.html'
+    template_name = 'task_edit.html'
 
     task_form = None
     parametrs_form = None

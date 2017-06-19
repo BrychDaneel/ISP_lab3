@@ -1,11 +1,87 @@
-<html>
-    <head>
-        <title>Task list</title>
-    </head>
-    <body>
-        <p> {{ task.target }} </p>
-        <p> {{ task.command }} </p>
-        <p> {{ task.status }} </p>
-        </form>
-    </body>
-</html>
+{% extends "base.html" %}
+
+{% block title %} Bucket parametrs {% endblock %}
+{% block headline %} Bucket parametrs  {% endblock %}
+
+{% block main %}
+    <p>
+    <table>
+        <caption><h2>Main options</h2></caption>
+        <tr>
+            <td>Bucket</td>
+            <td> <a href="{% url "bukkit_detail" id=task.bukkit.pk %}"> {{ task.bukkit }}</td>
+        </tr>
+        <tr>
+            <td>Opeartion</td>
+            <td> {{ task.command }}</td>
+        </tr>
+        <tr>
+            <td>Target</td>
+            <td> {{ task.target }}</td>
+        </tr>
+        <tr>
+            <td>Recursive</td>
+            <td> {{ task.recursive }}</td>
+        </tr>
+        {% if task.command == task.RESTORE %}
+        <tr>
+            <td>Version</td>
+            <td> {{ task.how_old }}</td>
+        </tr>
+        {% endif %}
+    </table>
+    </p>
+    
+    <p><table>
+        <caption><h2>Operation parametrs</h2></caption>
+        <tr>
+            <td>Force</td>
+            <td>{{ task.parametrs.force }}</td>
+        </tr>
+        <tr>
+            <td>Dryrun</td>
+            <td>{{ task.parametrs.dryrun }}</td>
+        </tr>
+        <tr>
+            <td>Replace files</td>
+            <td>{{ task.parametrs.auto_replace }}</td>
+        </tr>
+        <tr>
+            <td>Allow autoclen</td>
+            <td>{{ task.parametrs.allow_autoclean }}</td>
+        </tr>
+    </table></p>
+    
+    <p><table>
+        <caption><h2>Trash parametrs</h2></caption>
+        <tr>
+            <td>Max file size</td>
+            <td>{{ task.parametrs.trash_max_size }}</td>
+        </tr>
+        <tr>
+            <td>Max files count</td>
+            <td>{{ task.parametrs.trash_max_count }}</td>
+        </tr>
+    </table></p>
+    
+    <p><table>
+        <caption><h2>Cleaning parametrs</h2></caption>
+        <tr>
+            <td>Files count</td>
+            <td>{{ task.parametrs.autoclean_count }}</td>
+        </tr>
+        <tr>
+            <td>Trash size</td>
+            <td>{{ task.parametrs.autoclean_size }}</td>
+        </tr>
+        <tr>
+            <td>Days</td>
+            <td>{{ task.parametrs.autoclean_days }}</td>
+        </tr>
+        <tr>
+            <td>Same files count</td>
+            <td>{{ task.parametrs.autoclean_same_count }}</td>
+        </tr>
+    </table></p>
+
+{% endblock %}

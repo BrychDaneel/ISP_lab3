@@ -11,7 +11,7 @@ class BucketEdit(TemplateView):
     """
     """
     
-    template_name = 'bukkit_add.html'
+    template_name = 'bukkit_edit.html'
 
     bucket_form = None
     parametrs_form = None

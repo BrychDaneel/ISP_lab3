@@ -1,33 +1,47 @@
 {% extends "base.html" %}
 
+{% load staticfiles %}
+
 {% block title %} Bucket list {% endblock %}
 {% block headline %} Bucket list  {% endblock %}
 
 {% block main %}
     <table>
+        <tr>
+            <th>Name </td>
+            <th>Directory</td>
+            <th>Disk</td>
+            <th>Actions</td>
+        </tr>
         {% for bukkit in object_list %}
-        <p>
         <tr>
             <td>
-                <a href="{% url "bukkit_detail" id=bukkit.pk %}">
-                    {{ bukkit }}
-                </a>
+                {{ bukkit.name }}
             </td>
             
             <td>
-                <a href="{% url "bukkit_edit" id=bukkit.pk %}">
-                    edit
-                </a>
+                {{ bukkit.directory }}
             </td>
 
             <td>
+                Disk
+            </td>
+            <td>
+                <a href="{% url "bukkit_detail" id=bukkit.pk %}">
+                    <img src="{% static "images/actions/details.png" %}">
+                </a>
+                <a href="{% url "bukkit_edit" id=bukkit.pk %}">
+                    <img src="{% static "images/actions/edit.png" %}">
+                </a>
                 <a href="{% url "bukkit_remove" id=bukkit.pk %}">
-                    remove
+                    <img src="{% static "images/actions/delete.png" %}">
                 </a>
             </td>
         </tr>
         {% endfor %}
     </table>
     </p>
-    <div id="sidebar"><a class="sidebar-button" href="{% url "bukkit_add" %}">Add bucket</a><div id="sidebar">
+    <div id="sidebar">
+        <a class="sidebar-button"  href="{% url "bukkit_add" %}">Add bucket</a>
+    </div>
 {% endblock %}

@@ -1,23 +1,53 @@
-<html>
-    <head>
-        <title>Bukkit list</title>
-    </head>
-    <body>
-        <ul>
-            {% for task in object_list %}
-            <li>
+{% extends "base.html" %}
+
+{% load staticfiles %}
+
+{% block title %} Tasks list {% endblock %}
+{% block headline %} Tasks list  {% endblock %}
+
+{% block main %}
+    <table>
+        <tr>
+            <th>Bucket </td>
+            <th>Command</td>
+            <th>Target</td>
+            <th>Status</td>
+            <th>Actions</td>
+        </tr>
+        {% for task in object_list %}
+        <tr>
+            <td>
+                <a href="{% url "bukkit_detail" id=task.bukkit.pk %}"> {{ task.bukkit }} </a>
+            </td>
+            
+            <td>
+                {{ task.command }}
+            </td>
+            
+            <td>
+                {{ task.target }}
+            </td>
+
+            <td>
+                {{ task.status }}
+            </td>
+
+            <td>
                 <a href="{% url "task_detail" id=task.pk %}">
-                    {{ task }}
+                    <img src="{% static "images/actions/details.png" %}">
                 </a>
                 <a href="{% url "task_edit" id=task.pk %}">
-                    edit
+                    <img src="{% static "images/actions/edit.png" %}">
                 </a>
                 <a href="{% url "task_remove" id=task.pk %}">
-                    remove
+                    <img src="{% static "images/actions/delete.png" %}">
                 </a>
-            </li>
-            {% endfor %}
-        </ul>
-        <a href="{% url "task_add" %}">Добавить</a>
-    </body>
-</html>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    </p>
+    <div id="sidebar">
+        <a class="sidebar-button"  href="{% url "task_add" %}">Add task</a>
+    </div>
+{% endblock %}

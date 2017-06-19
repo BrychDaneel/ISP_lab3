@@ -1,13 +1,16 @@
-<html>
-    <head>
-        <title>Task list</title>
-    </head>
-    <body>
-        <form action="" method="post">
-            {% csrf_token %}
-            {{ task_form.as_p }}
-            {{ parametrs_form.as_p }}
-            <input type="submit" value="Send message" />
-        </form>
-    </body>
-</html>
+{% extends "base.html" %}
+
+{% block title %} Edit bucket {% endblock %}
+{% block headline %} Editing bucket {% endblock %}
+
+{% block main %}
+<div id="contact-form-container">
+    <form  class="vanilla-form" action="" method="post">
+        {% csrf_token %}
+        {{ task_form.as_p }}
+        {{ parametrs_form.as_p }}
+                
+        <input id="form_submit" type="submit" value="Save changes" />
+    </form>
+</div>
+{% endblock %}
