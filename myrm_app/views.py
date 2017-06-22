@@ -10,6 +10,7 @@ from myrm_app.view_classes.task_add import TaskAdd
 from myrm_app.view_classes.task_details import TaskDetails
 from myrm_app.view_classes.task_edit import TaskEdit
 from myrm_app.view_classes.task_remove import task_remove
+from myrm_app.view_classes.disk import Disk
 # Create your views here.
 
 def say_hellow(request):

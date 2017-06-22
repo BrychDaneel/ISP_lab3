@@ -9,6 +9,7 @@ from myrm_app.views import TaskAdd
 from myrm_app.views import TaskDetails
 from myrm_app.views import TaskEdit
 from myrm_app.views import task_remove
+from myrm_app.views import Disk
 import myrm_app.views as views
 
 urlpatterns = [
@@ -22,5 +23,6 @@ urlpatterns = [
     url(r'^tasks/add$', TaskAdd.as_view(), name='task_add'),
     url(r'^tasks/bucket(?P<id>\d+)$', TaskDetails.as_view(), name='task_detail'),
     url(r'^tasks/bucket(?P<id>\d+)/edit$', TaskEdit.as_view(), name='task_edit'),
-    url(r'^tasks/bucket(?P<id>\d+)/remove$', task_remove, name='task_remove')
+    url(r'^tasks/bucket(?P<id>\d+)/remove$', task_remove, name='task_remove'),
+    url(r'^disk$', Disk.as_view(), name='disk')
 ]
