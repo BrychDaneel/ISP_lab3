@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
-{% block title %} Edit bucket {% endblock %}
-{% block headline %} Editing bucket {% endblock %}
+{% block title %} Disk {% endblock %}
+{% block headline %} Disk {% endblock %}
 
 {% block main %}
     <table style="border:0">
@@ -83,9 +83,19 @@
                 {% endif %}
             {% endif %}
             
-            <td width="10%">
-                {% if items.is_removed %}
+            <td width="120"  style="padding:0">
+                {% if not item.is_removed %}
+                    <a href="{% url "task_add" %}?command=rm&target={{ item.path }}{% if bucket %}&bucket={{ bucket.pk }}{% endif %}">
+                        <img width=50 height=50 src="/static/images/operations/delete.png">
+                    </a>
                 {% else %}
+                    <a href="{% url "task_add" %}?command=rs&target={{ item.path }}{% if bucket %}&bucket={{ bucket.pk }}{% endif %}">
+                        <img width=50 height=50 src="/static/images/operations/restore.png">
+                    </a>
+                    
+                    <a href="{% url "task_add" %}?command=cl&target={{ item.path }}{% if bucket %}&bucket={{ bucket.pk }}{% endif %}">
+                        <img width=40 height=40 src="/static/images/operations/clean.png">
+                    </a>
                 {% endif %}
             </td>
         </tr>

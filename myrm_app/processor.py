@@ -24,10 +24,9 @@ def process():
             task = query_set.latest('created')
 
             params = task.parametrs.struct()
-            bucket_path = os.path.join('buckets', task.bukkit.directory)
+            bucket_path = os.path.join('buckets', task.bucket.directory)
             params['trash']['directory'] = bucket_path
             remover = Remover(**params)
-            
             target = os.path.join('disk', task.target)
             task.status = Task.RUNNING
             task.save()

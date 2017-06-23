@@ -1,8 +1,8 @@
 from django.forms import ModelForm
-from myrm_app.models import Bukkit
+from myrm_app.models import Bucket
 
 
 class BucketForm(ModelForm):
     class Meta():
-        model = Bukkit
+        model = Bucket
         fields = ["name", "directory"]

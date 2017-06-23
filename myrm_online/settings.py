@@ -105,3 +105,5 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 
 BUCKETS_DIR = os.path.join(BASE_DIR, 'backets')
 DISK_DIR = os.path.join(BASE_DIR, 'disk')
+
+

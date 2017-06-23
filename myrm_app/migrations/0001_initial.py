@@ -13,7 +13,7 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Bukkit',
+            name='Bucket',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('name', models.CharField(unique=True, max_length=30)),
@@ -43,13 +43,16 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('target', models.CharField(max_length=100)),
                 ('created', models.TimeField(auto_now=True)),
-                ('status', models.CharField(max_length=30, choices=[(b'rm', b'Remove'), (b'rs', b'Restore'), (b'cl', b'Clean')])),
-                ('bukkit', models.ForeignKey(to='myrm_app.Bukkit', on_delete=django.db.models.deletion.PROTECT)),
+                ('recursive', models.BooleanField(default=True)),
+                ('how_old', models.IntegerField(default=0)),
+                ('status', models.CharField(default=b'waiting', max_length=30, choices=[(b'completed', b'Waitint'), (b'canceled', b'Canceled'), (b'running', b'Running'), (b'completed', b'Completed'), (b'error', b'Error')])),
+                ('command', models.CharField(max_length=30, choices=[(b'rm', b'Remove'), (b'rs', b'Restore'), (b'cl', b'Clean')])),
+                ('bucket', models.ForeignKey(to='myrm_app.Bucket', on_delete=django.db.models.deletion.PROTECT)),
                 ('parametrs', models.OneToOneField(to='myrm_app.Parametrs')),
             ],
         ),
         migrations.AddField(
-            model_name='bukkit',
+            model_name='bucket',
             name='parametrs',
             field=models.OneToOneField(to='myrm_app.Parametrs'),
         ),

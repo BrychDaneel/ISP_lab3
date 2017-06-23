@@ -13,27 +13,29 @@
             <th>Disk</td>
             <th>Actions</td>
         </tr>
-        {% for bukkit in object_list %}
+        {% for bucket in object_list %}
         <tr>
             <td>
-                {{ bukkit.name }}
+                {{ bucket.name }}
             </td>
             
             <td>
-                {{ bukkit.directory }}
+                {{ bucket.directory }}
             </td>
 
             <td>
+                <a href="{% url "disk" %}?bucket={{ bucket.pk }}">
                 Disk
+                </a>
             </td>
             <td>
-                <a href="{% url "bukkit_detail" id=bukkit.pk %}">
+                <a href="{% url "bucket_detail" id=bucket.pk %}">
                     <img src="{% static "images/actions/details.png" %}">
                 </a>
-                <a href="{% url "bukkit_edit" id=bukkit.pk %}">
+                <a href="{% url "bucket_edit" id=bucket.pk %}">
                     <img src="{% static "images/actions/edit.png" %}">
                 </a>
-                <a href="{% url "bukkit_remove" id=bukkit.pk %}">
+                <a href="{% url "bucket_remove" id=bucket.pk %}">
                     <img src="{% static "images/actions/delete.png" %}">
                 </a>
             </td>
@@ -42,6 +44,6 @@
     </table>
     </p>
     <div id="sidebar">
-        <a class="sidebar-button"  href="{% url "bukkit_add" %}">Add bucket</a>
+        <a class="sidebar-button"  href="{% url "bucket_add" %}">Add bucket</a>
     </div>
 {% endblock %}

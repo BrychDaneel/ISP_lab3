@@ -1,6 +1,6 @@
 from django.conf.urls import url
-from myrm_app.views import BukkitList
-from myrm_app.views import BukkitAdd
+from myrm_app.views import BucketList
+from myrm_app.views import BucketAdd
 from myrm_app.views import BucketDetails
 from myrm_app.views import BucketEdit
 from myrm_app.views import bucket_remove
@@ -14,11 +14,11 @@ import myrm_app.views as views
 
 urlpatterns = [
     url(r'^$', views.say_hellow, name='say_hellow'),
-    url(r'^bukkits$', BukkitList.as_view(), name='bukkit_list'),
-    url(r'^bukkits/add$', BukkitAdd.as_view(), name='bukkit_add'),
-    url(r'^bukkits/bucket(?P<id>\d+)$', BucketDetails.as_view(), name='bukkit_detail'),
-    url(r'^bukkits/bucket(?P<id>\d+)/edit$', BucketEdit.as_view(), name='bukkit_edit'),
-    url(r'^bukkits/bucket(?P<id>\d+)/remove$', bucket_remove, name='bukkit_remove'),
+    url(r'^buckets$', BucketList.as_view(), name='bucket_list'),
+    url(r'^buckets/add$', BucketAdd.as_view(), name='bucket_add'),
+    url(r'^buckets/bucket(?P<id>\d+)$', BucketDetails.as_view(), name='bucket_detail'),
+    url(r'^buckets/bucket(?P<id>\d+)/edit$', BucketEdit.as_view(), name='bucket_edit'),
+    url(r'^buckets/bucket(?P<id>\d+)/remove$', bucket_remove, name='bucket_remove'),
     url(r'^tasks$', TaskList.as_view(), name='task_list'),
     url(r'^tasks/add$', TaskAdd.as_view(), name='task_add'),
     url(r'^tasks/bucket(?P<id>\d+)$', TaskDetails.as_view(), name='task_detail'),

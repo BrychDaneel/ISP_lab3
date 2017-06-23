@@ -1,8 +1,8 @@
 from django.views.generic import DetailView
-from myrm_app.models import Bukkit
+from myrm_app.models import Bucket
 
 class BucketDetails(DetailView):
-    template_name = "bukkit_details.html"
+    template_name = "bucket_details.html"
     context_object_name = 'bucket'
-    model = Bukkit
+    model = Bucket
     pk_url_kwarg = "id"

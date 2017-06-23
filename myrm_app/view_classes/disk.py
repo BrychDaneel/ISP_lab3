@@ -1,7 +1,7 @@
 import os
 from django.views.generic import TemplateView
 from django.http import Http404
-from myrm_app.models import Bukkit
+from myrm_app.models import Bucket
 from myrm_app.view_classes.disk_item import DiskItem
 from myrm.remover import Remover
 from django.shortcuts import get_object_or_404
@@ -16,7 +16,7 @@ class Disk(TemplateView):
 
     def get(self, request, *args, **kwargs):
         if 'bucket' in request.GET:
-            self.bucket = get_object_or_404(Bukkit, pk=request.GET['bucket'])
+            self.bucket = get_object_or_404(Bucket, pk=request.GET['bucket'])
         if 'dir' in request.GET:
             new_path = os.path.join(self.path, request.GET['dir'])
             if not os.path.exists(new_path) and not self.bucket:

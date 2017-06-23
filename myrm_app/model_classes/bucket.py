@@ -4,7 +4,7 @@ from django.db import models
 from django.core.validators import RegexValidator
 from myrm_app.model_classes.parametrs import Parametrs
 
-class Bukkit(models.Model):
+class Bucket(models.Model):
     """
     """
 
