@@ -1,7 +1,11 @@
 {% extends "project.html" %}
 
+{}
+
 {% block menu %}
+    <li><a href="{% url "home" %}"> Home </a></li>
     <li><a href="{% url "disk" %}"> Disk </a></li>
     <li><a href="{% url "bucket_list" %}"> Buckets </a></li>
     <li><a href="{% url "task_list" %}"> Tasks </a></li>
+    <li><a href="{% url "about" %}"> Contacts </a></li>
 {% endblock %}

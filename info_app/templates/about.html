@@ -1,0 +1,21 @@
+{% extends "project.html" %}
+
+{% block title %} Contacts {% endblock %}
+{% block headline %} Contacts  {% endblock %}
+
+{% block menu %}
+    <li><a href="{% url "home" %}"> Home </a></li>
+    <li><a href="{% url "disk" %}"> Disk </a></li>
+    <li><a href="{% url "bucket_list" %}"> Buckets </a></li>
+    <li><a href="{% url "task_list" %}"> Tasks </a></li>
+    <li><a href="{% url "about" %}"> Contacts </a></li>
+{% endblock %}
+
+{% block main %}
+<H3>
+<p>This project is made by student of group 553501 of BSUIR, Brychikov Daneel.</p>
+<p>You can contact with author with help of e-mail: <i>BrychDaneel@mail.ru</i></p>
+<p>Source code of project is theare: <a href="https://bitbucket.org/BrychDaneel/python_lab3"><i>https://bitbucket.org/BrychDaneel/python_lab3</i></p></a>
+</H3>
+{% endblock %}
+ 

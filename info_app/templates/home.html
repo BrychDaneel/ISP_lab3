@@ -1,0 +1,25 @@
+{% extends "project.html" %}
+
+{% block title %} Home {% endblock %}
+{% block headline %} Home  {% endblock %}
+
+{% block menu %}
+    <li><a href="{% url "home" %}"> Home </a></li>
+    <li><a href="{% url "disk" %}"> Disk </a></li>
+    <li><a href="{% url "bucket_list" %}"> Buckets </a></li>
+    <li><a href="{% url "task_list" %}"> Tasks </a></li>
+    <li><a href="{% url "about" %}"> Contacts </a></li>
+{% endblock %}
+
+{% block main %}
+<H3>
+<image width=40% heigth=40% align="left" border=50 src="static/images/myrm.png">
+<BR><BR><BR><BR>This is web interface for utiletes Myrm. <BR><BR>
+Myrm is utility that help to remove file. It uses buckets. All operation(except autoclean)
+use Unix filemask to select targect. <BR><BR>
+In this site you can create buckets and task for Myrm online. 
+There you can find small test disk, that contains some files. 
+You can remove and restore this files. Also you can delete files from buckets
+permomently.
+</H3>
+{% endblock %}

@@ -17,8 +17,12 @@ Including another URLconf
 import myrm_app.urls
 from django.conf.urls import include, url
 from django.contrib import admin
+from info_app.views import home
+from info_app.views import about
 
 urlpatterns = [
+    url(r'^$', home, name='home'),
+    url(r'^about$', about, name='about'),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^myrm/', include(myrm_app.urls))
 ]
