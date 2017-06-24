@@ -1,8 +1,14 @@
+"""Contains form for myrm parametrs.
+"""
+
+
 from django.forms import ModelForm
 from myrm_app.models import Parametrs
 
 
 class ParametrsForm(ModelForm):
+    """Form for myrm parametrs
+    """
     class Meta():
         model = Parametrs
         fields = ['force', 'dryrun', 'auto_replace', 'allow_autoclean',

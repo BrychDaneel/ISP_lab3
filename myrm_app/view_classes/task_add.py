@@ -1,3 +1,10 @@
+"""Contains model, than adds new task.
+
+Classes:
+ * TaskAdd
+"""
+
+
 from django.views.generic import TemplateView
 from django.core.urlresolvers import reverse_lazy
 from django.shortcuts import redirect
@@ -10,7 +17,7 @@ from myrm_app.processor import start_process
 
 
 class TaskAdd(TemplateView):
-    """
+    """Adds new task.
     """
     
     template_name = 'task_add.html'
@@ -28,12 +35,17 @@ class TaskAdd(TemplateView):
         if 'bucket' in request.GET:
             bucket_id = request.GET['bucket']
             form_data['bucket'] = get_object_or_404(Bucket, pk=bucket_id)
+            
         self.task_form = TaskForm(initial=form_data, prefix='task_form')
         
-        bucket = form_data['bucket']
-        if bucket:
+        if 'bucket' in form_data:
+            param = form_data['bucket'].parametrs
+            param.pk = None
             self.parametrs_form = ParametrsForm(prefix='parametrs_form', 
-                                                initial=bucket.parametrs)
+                                                    instance=param)
+        else:
+            self.parametrs_form = ParametrsForm(prefix='parametrs_form')
+
         return super(TaskAdd, self).get(request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):

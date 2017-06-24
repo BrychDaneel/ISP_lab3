@@ -1,0 +1,13 @@
+        """param_data = {}
+        if bucket:
+            param = bucket.parametrs
+            param_data['force'] = param.force
+            param_data['dryrun'] = param.dryrun 
+            param_data['auto_replace'] = param.auto_replace 
+            param_data['allow_autoclean'] = param.allow_autoclean
+            param_data['trash_max_size'] = param.trash_max_size
+            param_data['trash_max_count'] = param.trash_max_count
+            param_data['autoclean_count'] = param.autoclean_count
+            param_data['autoclean_size'] = param.autoclean_size
+            param_data['autoclean_days'] = param.autoclean_days
+            param_data['autoclean_same_count'] = param.autoclean_same_count""" 

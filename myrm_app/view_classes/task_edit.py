@@ -1,14 +1,27 @@
+"""Contains view, that edits tasks.
+
+Classes:
+ * TaskEdit
+"""
+
+
 from django.views.generic import TemplateView
 from django.core.urlresolvers import reverse_lazy
 from django.shortcuts import redirect
 from django.shortcuts import get_object_or_404
+from django.http import Http404
 from myrm_app.models import Task
 from myrm_app.view_classes.forms.task import TaskForm 
 from myrm_app.view_classes.forms.parametrs import ParametrsForm
 
 
 class TaskEdit(TemplateView):
-    """
+    """Edits tasks.
+    
+    Fields:
+     * task_form
+     * parametrs_form
+     * success_url
     """
     
     template_name = 'task_edit.html'
@@ -19,6 +32,8 @@ class TaskEdit(TemplateView):
     
     def get(self, request, *args, **kwargs):
         task = get_object_or_404(Task, pk=kwargs['id'])
+        if task.status != task.WAITING:
+            raise Http404('Task already processed.')
         parametrs = task.parametrs
         self.task_form = TaskForm(instance=task, prefix='task_form')
         self.parametrs_form = ParametrsForm(instance=parametrs, prefix='parametrs_form')

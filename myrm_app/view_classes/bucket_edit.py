@@ -1,3 +1,10 @@
+"""Contains view, than edits buckets.
+
+Classes:
+ * BucketEdit
+"""
+
+
 from django.views.generic import TemplateView
 from django.core.urlresolvers import reverse_lazy
 from django.shortcuts import redirect
@@ -8,7 +15,7 @@ from myrm_app.view_classes.forms.parametrs import ParametrsForm
 
 
 class BucketEdit(TemplateView):
-    """
+    """Edits buckets.
     """
     
     template_name = 'bucket_edit.html'

@@ -1,3 +1,10 @@
+"""Contains model, that store parametrs for myrm.
+
+Classes:
+ * Parametrs
+"""
+
+
 import myrm.remover
 import myrm.trash
 import myrm.autocleaner
@@ -5,7 +12,8 @@ from django.db import models
 
 
 class Parametrs(models.Model):
-    
+    """Store myrm parametrs.
+    """
     force = models.BooleanField(default=myrm.remover.DEFAULT_FORCE)
     dryrun = models.BooleanField(default=myrm.remover.DEFAULT_DRYRUN)
     auto_replace = models.BooleanField(default=myrm.remover.DEFAULT_AUTO_REPLACE)
@@ -20,6 +28,8 @@ class Parametrs(models.Model):
     autoclean_same_count = models.BigIntegerField(default=myrm.autocleaner.DEFAULT_CLEAN_SAME_COUNT)
     
     def struct(self):
+        """Packs parametrs into dict.
+        """
         params_dict = {}
         params_dict['force'] = self.force
         params_dict['dryrun'] = self.dryrun

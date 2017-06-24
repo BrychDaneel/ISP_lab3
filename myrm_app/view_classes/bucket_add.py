@@ -1,3 +1,7 @@
+"""Contains view, that adds bucket.
+"""
+
+
 from django.views.generic import TemplateView
 from django.core.urlresolvers import reverse_lazy
 from django.shortcuts import redirect
@@ -7,7 +11,7 @@ from myrm_app.view_classes.forms.parametrs import ParametrsForm
 
 
 class BucketAdd(TemplateView):
-    """
+    """Adds bucket.
     """
     
     template_name = 'bucket_add.html'

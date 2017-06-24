@@ -1,4 +1,21 @@
+"""Contains class, than describes disk items.
+
+Classes:
+ * DiskItem
+"""
+
+
 class DiskItem(object):
+    """Describes disk items.
+    
+    Fields:
+     * name -- last elemet of path
+     * is_dir
+     * is_removed
+     * remove_date
+     * path -- path to item, relative to disk folder   
+    """
+    
     name = None
     is_dir = None
     is_removed = None

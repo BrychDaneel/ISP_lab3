@@ -36,9 +36,11 @@
                 <a href="{% url "task_detail" id=task.pk %}">
                     <img src="{% static "images/actions/details.png" %}">
                 </a>
-                <a href="{% url "task_edit" id=task.pk %}">
-                    <img src="{% static "images/actions/edit.png" %}">
-                </a>
+                {% if task.status == task.WAITING %}
+                    <a href="{% url "task_edit" id=task.pk %}">
+                        <img src="{% static "images/actions/edit.png" %}">
+                    </a>
+                {% endif %}
                 <a href="{% url "task_remove" id=task.pk %}">
                     <img src="{% static "images/actions/delete.png" %}">
                 </a>

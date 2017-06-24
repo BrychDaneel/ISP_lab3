@@ -1,19 +1,19 @@
+""" Perfom task from database.
+
+Methods:
+ * start_process - entry poin
+ * 
+"""
+
+
 import threading
 import time
 from myrm_app.models import Task 
 from myrm.remover import Remover
 import os
 
-def start_process(first_run=[]):
-    if first_run:
-        return
-    first_run.append(True)
-    thread = threading.Thread(target=process)
-    thread.setDaemon(True)
-    thread.start()
 
-
-def process():
+def _process():
         while True:
             query_set = Task.objects.filter(status=Task.WAITING)
             
@@ -36,7 +36,7 @@ def process():
 
                 elif task.command == Task.RESTORE:
                     remover.restore(target)
-                    
+
                 elif task.command == Task.CLEAN:
                     remover.clean(target)
 
@@ -46,3 +46,14 @@ def process():
             else:
                 task.status = Task.COMPLETED
                 task.save()
+
+
+def start_process(first_run=[]):
+    """Starts endless cyrcle.
+    """
+    if first_run:
+        return
+    first_run.append(True)
+    thread = threading.Thread(target=_process)
+    thread.setDaemon(True)
+    thread.start()

@@ -1,3 +1,10 @@
+"""Contains view, than browse disk items.
+
+Classes:
+ * Disk
+"""
+
+
 import os
 from django.views.generic import TemplateView
 from django.http import Http404
@@ -7,8 +14,16 @@ from myrm.remover import Remover
 from django.shortcuts import get_object_or_404
 from myrm.stamp import get_file_list_dict
 
-class Disk(TemplateView):
 
+class Disk(TemplateView):
+    """Browses disk items.
+    
+    Fieds:
+     * base_path -- path to base disk folder
+     * path -- path to show
+     * bucket -- also shows item from this bucket
+    """
+    
     template_name = "disk.html"
     base_path = 'disk'
     path = base_path
@@ -25,6 +40,8 @@ class Disk(TemplateView):
         return super(Disk, self).get(request, *args, **kwargs)
     
     def get_items_list(self):
+        """Returns list of items.
+        """
         real_items = []
         if os.path.exists(self.path):
             real_items = os.listdir(self.path)
